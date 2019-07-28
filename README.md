@@ -20,3 +20,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ![image](https://github.com/ly05010419/Book_Flutter/blob/master/screenshot.png?raw=true)
 ![image](https://github.com/ly05010419/Book_Flutter/blob/master/screenshot2.png?raw=true)
+
+## Thanks
+
+https://www.youtube.com/watch?v=vyugtXBUaCU&list=PLSXPK8kb8r-0lBfPvsd3v9m8lAt84Mn_a&index=14
