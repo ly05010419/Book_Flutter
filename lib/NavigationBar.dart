@@ -21,8 +21,8 @@ class _NavigationBarState extends State<NavigationBar> {
       new NavigationItem(
           FontAwesomeIcons.playstation, "  PS", Colors.blueAccent),
       new NavigationItem(FontAwesomeIcons.apple, "Apple", Colors.black),
-      new NavigationItem(FontAwesomeIcons.google, "oogle", Colors.greenAccent),
-      new NavigationItem(FontAwesomeIcons.amazon, "mazon", Colors.yellow),
+      new NavigationItem(FontAwesomeIcons.google, "oogle", Colors.yellowAccent),
+      new NavigationItem(FontAwesomeIcons.amazon, "mazon", Colors.greenAccent),
     ];
 
     return Container(
@@ -43,8 +43,7 @@ class _NavigationBarState extends State<NavigationBar> {
       child: Row(
           children: itemList.map((item) {
             int index = itemList.indexOf(item);
-
-            return GestureDetector(
+            return InkWell(
               onTap: () {
                 widget.seletedIndex = index;
                 setState(() {

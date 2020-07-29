@@ -3,6 +3,6 @@ import 'package:flutter/material.dart';
 class GooglePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.greenAccent,);
+    return Container(color: Colors.yellowAccent,);
   }
 }

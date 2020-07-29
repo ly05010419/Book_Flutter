@@ -26,7 +26,59 @@ class BookDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget topRight = Column(
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(book.name),
+        ),
+        body: Column(
+          children: <Widget>[createHeader(), createBottomContent()],
+        ));
+  }
+
+  Widget createBottomContent() {
+    return Container(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Text(
+          book.description,
+          textAlign: TextAlign.justify,
+          style: TextStyle(fontSize: 18, height: 1.5),
+        ),
+      ),
+      height: 545,
+    );
+  }
+
+  Widget createHeader() {
+    return Container(
+      color: Colors.white,
+      alignment: Alignment.topCenter,
+      child: Container(
+          height: 220,
+          color: Colors.greenAccent,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, top: 20),
+            child: Row(
+              children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    createItemHero(book),
+                  ],
+                ),
+                Flexible(
+                    child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: createRightColumn(),
+                ))
+              ],
+            ),
+          )),
+    );
+  }
+
+  Widget createRightColumn() {
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
@@ -40,11 +92,11 @@ class BookDetail extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10),
           child: Text(
             "by ${book.writer}",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 10, right: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -52,7 +104,9 @@ class BookDetail extends StatelessWidget {
                 "${book.prise}\$ ",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              RatingBar(rating: book.rating,),
+              RatingBar(
+                rating: book.rating,
+              ),
             ],
           ),
         ),
@@ -64,7 +118,7 @@ class BookDetail extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 22),
             ),
             onPressed: () {},
-            color: Colors.blue,
+            color: Colors.amberAccent,
             elevation: 16,
             minWidth: 250,
             highlightElevation: 4,
@@ -75,74 +129,19 @@ class BookDetail extends StatelessWidget {
         )
       ],
     );
-
-    Widget topLeft = Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        createItemHero(book),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            "${book.pages} pages",
-            style: TextStyle(fontSize: 16, color: Colors.grey),
-          ),
-        ),
-      ],
-    );
-
-    Widget topContent = Container(
-      color: Colors.white,
-      alignment: Alignment.topCenter,
-      child: Container(
-          height: 220,
-          color: Colors.yellow,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20, top: 20),
-            child: Row(
-              children: <Widget>[
-                topLeft,
-                Flexible(
-                    child: Padding(
-                  padding: const EdgeInsets.only(left: 20,right: 20),
-                  child: topRight,
-                ))
-              ],
-            ),
-          )),
-    );
-
-    Widget bottomContent = Container(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Text(
-          book.description,
-          style: TextStyle(fontSize: 18,height: 1.5),
-        ),
-      ),
-      height: 545,
-    );
-
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Detail"),
-        ),
-        body: Column(
-          children: <Widget>[topContent, bottomContent],
-        ));
   }
 
   Widget createItemHero(Book book) {
     return Container(
-      height: 150,
-      width: 100,
+      width: 120,
       child: Hero(
         tag: book.name,
         child: Material(
-          elevation: 16,
+          elevation: 2,
           shadowColor: Colors.red.shade900,
           child: Image.asset(
             book.image,
-            fit: BoxFit.cover,
+            fit: BoxFit.fitWidth,
           ),
         ),
       ),

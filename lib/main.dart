@@ -30,11 +30,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        "/detail": (context) {
-          return BookDetail();
-        }
-      },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -60,8 +55,7 @@ class _AppState extends State<App> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        title: Text("Amozon"),
-        leading: Icon(Icons.menu),
+        title: Text("Buch"),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -99,3 +93,5 @@ class _AppState extends State<App> {
     );
   }
 }
+
+
